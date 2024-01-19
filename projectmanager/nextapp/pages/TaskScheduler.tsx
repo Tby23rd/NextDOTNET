@@ -132,30 +132,31 @@ export default function TaskScheduler() {
             </form>
 
             <div className="space-y-4">
-   <h2 className="text-2xl font-bold mb-2">Tasks</h2>
-   <ul>
-       {filteredTasks.map(task => (
-           <li key={task.id} className="flex justify-between items-center border-b border-gray-200 py-2">
-               <span>{task.task} - {task.priority} - {task.deadline}</span>
-               <div>
-                  <button onClick={() => markDone(task.id)} className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">Done</button>
-                  <button onClick={() => handleDeleteTask(task.id)} className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Delete</button>
-               </div>
-           </li>
-       ))}
-   </ul>
-</div>
-<div className="mt-8 space-y-4">
-   <h2 className="text-2xl font-bold mb-2">Completed Tasks</h2>
-   <ul>
-       {state.tasks.filter(task => task.done).map(task => (
-           <li key={task.id} className="flex justify-between items-center border-b border-gray-200 py-2">
-               <span>{task.task} - {task.priority} - {task.deadline}</span>
-               <button onClick={() => markDone(task.id)} className="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded">Undone</button>
-           </li>
-       ))}
-   </ul>
-</div>
+                <h2 className="text-2xl font-bold mb-2">Tasks</h2>
+                <ul>
+                    {filteredTasks.map(task => (
+                        <li key={task.id} className="flex justify-between items-center border-b border-gray-200 py-2">
+                            <span>{task.task} - {task.priority} - {task.deadline}</span>
+                            <div className="space-x-4">
+                                <button onClick={() => markDone(task.id)} className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">Done</button>
+                                <button onClick={() => handleDeleteTask(task.id)} className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Delete</button>
+                            </div>
+
+                        </li>
+                    ))}
+                </ul>
+            </div>
+            <div className="mt-8 space-y-4">
+                <h2 className="text-2xl font-bold mb-2">Completed Tasks</h2>
+                <ul>
+                    {state.tasks.filter(task => task.done).map(task => (
+                        <li key={task.id} className="flex justify-between items-center border-b border-gray-200 py-6">
+                            <span>{task.task} - {task.priority} - {task.deadline}</span>
+                            <button onClick={() => markDone(task.id)} className="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded">Undone</button>
+                        </li>
+                    ))}
+                </ul>
+            </div>
 
         </div>
     );
